@@ -29,6 +29,8 @@ const MainContent = () => {
           <Route path="/createproject" element={<CreateProject />} />
           <Route path="/tasks/:projectId" element={<Dashboard />} />
           <Route path='/projects' element={<Projects/>}/>
+          <Route path='*' element={<Projects/>}/>
+
         </Routes>
       </div>
     </div>
