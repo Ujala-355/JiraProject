@@ -15,7 +15,6 @@ const Dashboard = () => {
   const [error, setError] = useState("");
   const [newTask, setNewTask] = useState({
     title: "",
-    description: "",
     priority: "Low", // Default priority
   });
 
@@ -111,7 +110,6 @@ const Dashboard = () => {
         `http://localhost:5000/api/tasks`,
         {
           title: newTask.title,
-          description: newTask.description,
           priority: newTask.priority,
           status: "todo",
           projectId,
@@ -126,7 +124,7 @@ const Dashboard = () => {
         todo: [...prevTasks.todo, response.data],
       }));
 
-      setNewTask({ title: "", description: "", priority: "Low" });
+      setNewTask({ title: "", priority: "Low" });
     } catch (err) {
       setError("Failed to create task. Please try again later.");
       console.error("Error creating task:", err);
@@ -152,20 +150,6 @@ const Dashboard = () => {
               className="form-control"
               value={newTask.title}
               onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="taskDescription" className="form-label">
-              Description
-            </label>
-            <textarea
-              id="taskDescription"
-              className="form-control"
-              value={newTask.description}
-              onChange={(e) =>
-                setNewTask({ ...newTask, description: e.target.value })
-              }
               required
             />
           </div>
