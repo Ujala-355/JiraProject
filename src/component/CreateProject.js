@@ -41,6 +41,9 @@ const CreateProject = () => {
         }
     };
 
+    // Form validation: disable submit button if inputs are empty
+    const isFormValid = name.trim() !== "" && description.trim() !== "";
+
     return (
         <div className="container mt-5">
             <div className="row justify-content-center">
@@ -79,7 +82,11 @@ const CreateProject = () => {
                             ></textarea>
                             <div className="invalid-feedback">Please provide a project description.</div>
                         </div>
-                        <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-100"
+                            disabled={loading || !isFormValid} // Disable if loading or form is invalid
+                        >
                             {loading ? "Creating..." : "Create Project"}
                         </button>
                     </form>
