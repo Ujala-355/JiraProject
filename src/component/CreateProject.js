@@ -41,9 +41,7 @@ const CreateProject = () => {
         }
     };
 
-    // Form validation: disable submit button if inputs are empty
     const isFormValid = name.trim() !== "" && description.trim() !== "";
-
     return (
         <div className="container mt-5">
             <div className="row justify-content-center">
